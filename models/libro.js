@@ -8,7 +8,8 @@ const LibroSchema = new mongoose.Schema({
   author: { type: String, required: true },
   genre: { type: String },
   publication_year: { type: Number },
-  status: { type: String, enum: ["Por leer", "Leyendo", "Leído"], default: "Por leer" }
+  status: { type: String, enum: ["Por leer", "Leyendo", "Leído"], default: "Por leer" },
+  cover: { type: String }
 });
 
 // Mongoose crea automáticamente una colección llamada libros en la base de datos basada en este esquema.
