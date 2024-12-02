@@ -4,7 +4,6 @@
 Un sistema básico para gestionar una colección personal de libros. Este proyecto permite:
 - Agregar libros con información como título, autor, género y estado.
 - Consultar, actualizar y eliminar libros.
-- Filtrar libros por estado, género o autor.
 
 ## Tecnologías utilizadas
 - **MongoDB**: Base de datos NoSQL para almacenar los datos.
