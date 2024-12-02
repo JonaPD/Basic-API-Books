@@ -6,8 +6,17 @@ const express = require('express');
 // Traduce los objetos JavaScript en documentos MongoDB.
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 
 const app = express();
+
+
+// Permitir solicitudes desde cualquier origen (o el frontend específico)
+app.use(cors({
+  origin: '*', // Permitir todos los orígenes
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Métodos permitidos
+  allowedHeaders: ['Content-Type', 'Authorization'], // Encabezados permitidos
+}));
 
 // Middleware 
 // bodyParser: Convierte el cuerpo de las solicitudes (JSON enviado por el cliente) 
@@ -33,3 +42,4 @@ const PORT = 3000;
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });
+
