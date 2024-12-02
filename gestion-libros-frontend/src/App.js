@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import LibroList from './components/LibroList';
 import LibroForm from './components/LibroForm';
+import './App.css';
 
 const App = () => {
   const [libros, setLibros] = useState([]);
@@ -11,6 +12,7 @@ const App = () => {
   };
 
   return (
+    
     <div>
       <h1>Gestor de Libros 📚</h1>
       <LibroForm onLibroAdded={handleLibroAdded} />

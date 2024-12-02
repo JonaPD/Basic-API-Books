@@ -1,14 +1,27 @@
 // src/components/LibroItem.js
 import React from 'react';
 
-const LibroItem = ({ libro }) => {
+const LibroItem = ({ libro, onDeleteLibro }) => {
+  const handleDelete = () => {
+    if (window.confirm(`¿Estás seguro de que deseas eliminar "${libro.title}"?`)) {
+      onDeleteLibro(libro._id); // Llama a la función onDeleteLibro con el ID del libro
+    }
+  };
+
   return (
-    <div style={{ border: '1px solid #ccc', padding: '10px', margin: '10px' }}>
-      <h3>{libro.title}</h3>
-      <p><b>Autor:</b> {libro.author}</p>
-      <p><b>Género:</b> {libro.genre}</p>
-      <p><b>Año:</b> {libro.publication_year}</p>
-      <p><b>Estado:</b> {libro.status}</p>
+    <div className="card shadow-sm">
+      <div className="card-body">
+        <h5 className="card-title">{libro.title}</h5>
+        <h6 className="card-subtitle mb-2 text-muted">Autor: {libro.author}</h6>
+        <p className="card-text">
+          <strong>Género:</strong> {libro.genre || 'N/A'} <br />
+          <strong>Año de publicación:</strong> {libro.publication_year || 'N/A'} <br />
+          <strong>Estado:</strong> {libro.status}
+        </p>
+        <button className="btn btn-danger btn-sm" onClick={handleDelete}>
+          Eliminar
+        </button>
+      </div>
     </div>
   );
 };

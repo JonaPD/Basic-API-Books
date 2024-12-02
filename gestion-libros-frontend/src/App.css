@@ -1,38 +1,151 @@
-.App {
+/* Estilos generales */
+body {
+  font-family: 'Roboto', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f6f9;
+  color: #2c3e50;
+  line-height: 1.6;
+}
+
+h1, h2 {
   text-align: center;
+  margin: 20px 0;
+  color: #34495e;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Contenedor principal */
+.container {
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 20px;
+  background: #ffffff;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Formularios */
+form {
   display: flex;
   flex-direction: column;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+label {
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+input {
+  padding: 12px;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 1px solid #dcdfe6;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input:focus {
+  outline: none;
+  border-color: #3498db;
+  box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+}
+
+button {
+  padding: 12px 20px;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: none;
+  background-color: #3498db;
+  color: #ffffff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+button:hover {
+  background-color: #2980b9;
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+/* Lista de libros */
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  padding: 15px;
+  margin: 10px 0;
+  background: #ecf0f1;
+  border-radius: 8px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, transform 0.1s ease;
 }
 
-.App-link {
-  color: #61dafb;
+li:hover {
+  background-color: #dfe6e9;
+  transform: scale(1.02);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Información del libro */
+.libro-info {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.libro-info strong {
+  font-size: 1.1rem;
+  color: #34495e;
+}
+
+.libro-info span {
+  font-size: 0.9rem;
+  color: #7f8c8d;
+}
+
+/* Botón de acciones */
+.action-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.action-buttons button {
+  padding: 6px 12px;
+  font-size: 0.9rem;
+  background-color: #e74c3c;
+  border: none;
+  color: #fff;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+.action-buttons button:hover {
+  background-color: #c0392b;
+}
+
+.action-buttons button:first-child {
+  background-color: #2ecc71;
+}
+
+.action-buttons button:first-child:hover {
+  background-color: #27ae60;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #34495e;
+  color: #ffffff;
+  border-radius: 8px;
 }
