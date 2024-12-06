@@ -1,10 +1,12 @@
-// src/components/LibroList.js
 import React, { useState, useEffect } from 'react';
 import api from '../api';
 import LibroItem from './LibroItem';
 
 const LibroList = () => {
   const [libros, setLibros] = useState([]);
+  const [busqueda, setBusqueda] = useState(''); // Estado para búsqueda
+  const [filtroEstado, setFiltroEstado] = useState(''); // Estado para filtro por estado
+  const [filtroGenero, setFiltroGenero] = useState(''); // Estado para filtro por género
 
   useEffect(() => {
     // Obtener libros del backend
@@ -12,6 +14,17 @@ const LibroList = () => {
       .then((response) => setLibros(response.data))
       .catch((error) => console.error('Error al obtener libros:', error));
   }, []);
+
+  // Función para manejar búsqueda y filtros
+  const librosFiltrados = libros.filter((libro) => {
+    const coincideBusqueda =
+      libro.title.toLowerCase().includes(busqueda.toLowerCase()) ||
+      libro.author.toLowerCase().includes(busqueda.toLowerCase());
+    const coincideEstado = filtroEstado ? libro.status === filtroEstado : true;
+    const coincideGenero = filtroGenero ? libro.genre === filtroGenero : true;
+
+    return coincideBusqueda && coincideEstado && coincideGenero;
+  });
 
   const handleDeleteLibro = (id) => {
     // Llamada al backend para eliminar el libro
@@ -26,17 +39,51 @@ const LibroList = () => {
   return (
     <div className="container mt-4">
       <h2 className="text-center mb-4">Lista de Libros</h2>
-      {libros.length > 0 ? (
+
+      {/* Campos de búsqueda y filtros */}
+      <div className="mb-4">
+        <input
+          type="text"
+          className="form-control mb-2"
+          placeholder="Buscar por título o autor"
+          value={busqueda}
+          onChange={(e) => setBusqueda(e.target.value)}
+        />
+        <select
+          className="form-select mb-2"
+          value={filtroEstado}
+          onChange={(e) => setFiltroEstado(e.target.value)}
+        >
+          <option value="">Filtrar por estado</option>
+          <option value="Por leer">Por leer</option>
+          <option value="Leyendo">Leyendo</option>
+          <option value="Leído">Leído</option>
+        </select>
+        <select
+          className="form-select"
+          value={filtroGenero}
+          onChange={(e) => setFiltroGenero(e.target.value)}
+        >
+          <option value="">Filtrar por género</option>
+          <option value="Ficción">Ficción</option>
+          <option value="Ciencia">Ciencia</option>
+          <option value="Fantasía">Fantasía</option>
+          <option value="Terror">Terror</option>
+        </select>
+      </div>
+
+      {/* Lista de libros filtrados */}
+      {librosFiltrados.length > 0 ? (
         <div className="row">
-          {libros.map((libro) => (
+          {librosFiltrados.map((libro) => (
             <div key={libro._id} className="col-md-4 mb-4">
-              <LibroItem libro={libro} onDeleteLibro={handleDeleteLibro} />
+              <LibroItem libro={libro} onDeleteLibro={handleDeleteLibro} /> 
             </div>
           ))}
         </div>
       ) : (
         <div className="alert alert-warning text-center" role="alert">
-          No hay libros disponibles. ¡Agrega uno para comenzar!
+          No se encontraron libros que coincidan con los criterios.
         </div>
       )}
     </div>

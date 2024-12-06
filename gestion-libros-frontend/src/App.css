@@ -149,4 +149,10 @@ footer {
   color: #ffffff;
   border-radius: 8px;
 }
+.card-img-top {
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+  max-height: 200px; /* Limita la altura */
+  object-fit: cover; /* Recorta la imagen para ajustarla */
+}
 

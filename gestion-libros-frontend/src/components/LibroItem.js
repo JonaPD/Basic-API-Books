@@ -7,9 +7,17 @@ const LibroItem = ({ libro, onDeleteLibro }) => {
       onDeleteLibro(libro._id); // Llama a la función onDeleteLibro con el ID del libro
     }
   };
-
+  
   return (
     <div className="card shadow-sm">
+  
+        <img
+          src={'https://mott.pe/noticias/wp-content/uploads/2016/03/libros-bb.jpg'}
+          alt={`Portada de ${libro.title}`}
+          className="card-img-top"
+          style={{ maxHeight: '100px', objectFit: 'cover' }} // Ajuste de imagen
+        />
+      
       <div className="card-body">
         <h5 className="card-title">{libro.title}</h5>
         <h6 className="card-subtitle mb-2 text-muted">Autor: {libro.author}</h6>
@@ -25,5 +33,6 @@ const LibroItem = ({ libro, onDeleteLibro }) => {
     </div>
   );
 };
+
 
 export default LibroItem;
