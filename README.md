@@ -36,5 +36,6 @@ Antes de comenzar, asegúrate de tener instalados:
 6. Puedes comprobar en la base de datos de MongoDB o usar MongoDB Compass que se ha creado una base de datos y una coleccion cuando agreges un nuevo libro.
    ```bash
    mongosh
-   use gestion_libros
    show dbs
+   use gestion_libros
+   
